@@ -25,7 +25,7 @@
         <br>
         <h3>
             
-            Passed test cases -  {{ trueFlagCount}}
+            Passed test cases -  {{ trueFlagCount }}
         </h3>
         <br>
         <div v-for="test in currentTestcaseSet" key="test.id">
@@ -38,8 +38,21 @@
                 output -> {{ test.output}}
             </div>
             
+            <div>
+                test result -> {{ test.testResult}}
+            </div>
+            
             <br>
         </div>
+        <hr>
+        <h1>Summary :</h1>
+        <ol>
+        <li v-for="(item, index) in testcases">
+            <span v-for="item in item">
+              {{ item.testResult }} | 
+            </span>
+          </li>
+        </ol>
     </div>
     <script type="module" src="./App.js"></script>
 </body>

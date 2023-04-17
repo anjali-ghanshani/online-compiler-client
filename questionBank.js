@@ -23,29 +23,29 @@ export const questionBank = [
 
 export const testcases = [
     [{
-        id: 1,
         input: 'Anjali',
         output: "Hello Anjali\n",
+        testResult: null,
     },
     {
-        id: 2,
         input: 'Rahul',
-        output: "Hello Rahul\n"
+        output: "Hello Rahul\n",
+        testResult: null,
     },
     {
-        id: 3,
         input: 'AAA',
-        output: "Hello AAA\n"
+        output: "Hello AAA\n",
+        testResult: null,
     },
     {
-        id: 4,
         input: 'ABC',
-        output: "Hello ABC\n"
+        output: "Hello ABC\n",
+        testResult: null,
     },
     {
-        id: 5,
         input: 'SSS',
-        output: "Hello SS\n"
+        output: "Hello SS\n",
+        testResult: null,
     }]
     ,
 
@@ -53,22 +53,27 @@ export const testcases = [
         {
             input: [1, 2, 3, 4, 5],
             output: [5, 4, 3, 2, 1],
+            testResult: null,
         },
         {
             input: ['Windows', 'macOS', 'Linux'],
             output: ['Linux', 'macOS', 'Windows'],
+            testResult: null,
         },
         {
             input: ['!', '@', '#', '$'],
             output: ['$', '#', '@', '!'],
+            testResult: null,
         },
         {
             input: ['an', 'as', 'qwe'],
             output: ['qwe', 'as', 'an'],
+            testResult: null,
         },
         {
             input: [],
             output: [],
+            testResult: null,
         }
     ],
     [{

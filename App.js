@@ -1,5 +1,4 @@
 import { questionBank, testcases } from "./questionBank.js"
-// console.log(questions[0])
 
 const app = Vue.createApp({
 
@@ -11,9 +10,8 @@ const app = Vue.createApp({
             codeFromBox: null,
             testcases: testcases,
             flag: 'false',
-            trueFlagCount: 0
+            trueFlagCount: 0,
         }
-
     },
     computed: {
         currentQuestion() {
@@ -21,7 +19,6 @@ const app = Vue.createApp({
         },
         currentTestcaseSet() {
             let currentTestcaseSet = this.testcases[this.currentQuestionIndex]
-            // console.log(currentTestcaseSet[0])
             return currentTestcaseSet
         }
     },
@@ -69,27 +66,26 @@ const app = Vue.createApp({
                 }
             }
 
-            // Example usage: Call the function with the code to run on Judge0
             // for each value in the testcaseList the code will run on Judge0
             let testcaseList = this.testcases[this.currentQuestionIndex]
             for (let i = 0; i <= testcaseList.length - 1; i++) {
-                runCodeOnJudge0(this.codeFromBox, testcaseList[i].input, testcaseList[i].output)
+                runCodeOnJudge0(this.codeFromBox, testcaseList[i].input, testcaseList[i].output, testcaseList[i].testResult)
                     .then(result => {
                         console.log('Submission Result:', result);
-
                         this.output = result.stdout
-                        if (this.output === testcaseList[i].output) this.trueFlagCount++
-
-
+                        if (this.output === testcaseList[i].output) {
+                            this.trueFlagCount++
+                            testcaseList[i].testResult = "PASS"
+                        }
+                        else testcaseList[i].testResult = "Fail"
+                        console.log('testResult value', testcaseList[i].testResult);
                     })
                     .catch(error => {
                         console.error('Error:', error.message);
                     });
             }
-
-
+            console.log(testcaseList)
         }
-
     }
 })
 
