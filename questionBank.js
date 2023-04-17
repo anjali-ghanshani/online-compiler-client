@@ -25,27 +25,27 @@ export const testcases = [
     [{
         id: 1,
         input: 'Anjali',
-        output: "hello Anjali\n",
+        output: "Hello Anjali\n",
     },
     {
         id: 2,
-        input: [3, 4, 8, 2],
-        output: 8
+        input: 'Rahul',
+        output: "Hello Rahul\n"
     },
     {
         id: 3,
-        input: [98, 54, 23, 11, 5, 4, 2],
-        output: 98
+        input: 'AAA',
+        output: "Hello AAA\n"
     },
     {
         id: 4,
-        input: [2211334456, 222333, 555, 33, 1,],
-        output: 2211334456,
+        input: 'ABC',
+        output: "Hello ABC\n"
     },
     {
         id: 5,
-        input: [5, 7, 0, 6, 4, 33, 2, 11, 2, 34, 5, 66, 77877, 54, 34343, 3, 232, 2, 3],
-        output: 77877
+        input: 'SSS',
+        output: "Hello SS\n"
     }]
     ,
 

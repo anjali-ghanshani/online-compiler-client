@@ -9,24 +9,20 @@ const app = Vue.createApp({
             currentQuestionIndex: 0,
             output: null,
             codeFromBox: null,
-            testcases: testcases
+            testcases: testcases,
+            flag: 'false',
+            trueFlagCount: 0
         }
 
-        // return {
-        //     question: questions[0].question,
-        //     codeFromBox: null,
-        //     inputs: '',
-        //     expectedOutputs: 4,
-        //     output: '',
-        //     testcases: questions[0].testcases[0].input,
-        // }
     },
     computed: {
         currentQuestion() {
             return this.questions[this.currentQuestionIndex];
         },
         currentTestcaseSet() {
-            return this.testcases[this.currentQuestionIndex]
+            let currentTestcaseSet = this.testcases[this.currentQuestionIndex]
+            // console.log(currentTestcaseSet[0])
+            return currentTestcaseSet
         }
     },
     methods: {
@@ -43,8 +39,7 @@ const app = Vue.createApp({
         runCode() {
 
             // Function to run code on Judge0
-            async function runCodeOnJudge0(input_code) {
-                console.log(input_code)
+            async function runCodeOnJudge0(input_code, input, output) {
                 try {
                     // Define the API endpoint for running code on Judge0
                     const apiUrl = 'http://192.168.1.107:2358/submissions?wait=true';
@@ -53,8 +48,8 @@ const app = Vue.createApp({
                     const requestBody = {
                         source_code: input_code,
                         language_id: 71, // Specify the language ID (e.g., 71 for Python)
-                        stdin: 'Anjali', // Optional standard input for the code
-                        expected_output: '', // Optional expected output for the code
+                        stdin: input, // Optional standard input for the code
+                        expected_output: output, // Optional expected output for the code
                     };
 
                     // Make a POST request to the Judge0 API to submit the code
@@ -75,15 +70,22 @@ const app = Vue.createApp({
             }
 
             // Example usage: Call the function with the code to run on Judge0
+            // for each value in the testcaseList the code will run on Judge0
+            let testcaseList = this.testcases[this.currentQuestionIndex]
+            for (let i = 0; i <= testcaseList.length - 1; i++) {
+                runCodeOnJudge0(this.codeFromBox, testcaseList[i].input, testcaseList[i].output)
+                    .then(result => {
+                        console.log('Submission Result:', result);
 
-            runCodeOnJudge0(this.codeFromBox)
-                .then(result => {
-                    console.log('Submission Result:', result);
-                    this.output = result.stdout
-                })
-                .catch(error => {
-                    console.error('Error:', error.message);
-                });
+                        this.output = result.stdout
+                        if (this.output === testcaseList[i].output) this.trueFlagCount++
+
+
+                    })
+                    .catch(error => {
+                        console.error('Error:', error.message);
+                    });
+            }
 
 
         }

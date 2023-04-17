@@ -15,7 +15,6 @@
             <button @click="previousQuestion">Previous</button>
             <h1>{{ currentQuestion.id }} - {{currentQuestion.question}}</h1>
             <button @click="nextQuestion">Next</button>
-            <div>{{currentTestcaseSet.input}}</div>
         </div>
         <br>
         <label for="inputCode">Your code goes here:</label><br>
@@ -24,7 +23,10 @@
         <button v-on:click="runCode()">submit code</button>
         
         <br>
-        Your Output is {{ output }}
+        <h3>
+            
+            Passed test cases -  {{ trueFlagCount}}
+        </h3>
         <br>
         <div v-for="test in currentTestcaseSet" key="test.id">
             <div>testcase{{test.id}}</div>
@@ -35,6 +37,7 @@
             <div>
                 output -> {{ test.output}}
             </div>
+            
             <br>
         </div>
     </div>

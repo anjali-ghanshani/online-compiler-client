@@ -1,8 +1,9 @@
-def a():
-    I = input("Enter your name: ")
-    print (f"Hello {I}")
-    X = input("How are you?: ")
-    print("Fine..")
+I = input("")
+print (f"Hello {I}")
 
 
-a()
+inputcode 2:
+
+I = input([])
+res = I[::-1]
+print (I)
