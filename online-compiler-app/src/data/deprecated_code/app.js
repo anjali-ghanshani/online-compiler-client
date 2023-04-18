@@ -1,4 +1,4 @@
-import { questionBank, testcases } from "./questionBank.js"
+import { questionBank, testcases } from "../questionBank.js"
 
 const app = Vue.createApp({
 
