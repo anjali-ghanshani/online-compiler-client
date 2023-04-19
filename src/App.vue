@@ -2,16 +2,18 @@
 import { reactive , ref , computed} from 'vue';
 import { questionBank } from "./data/questionBank.js"
 import './assets/main.css'
+import Code from './components/Code.vue'
+
 
 const questions = reactive(questionBank)
 const currentId = ref(0)
-const codeFromBox = ref("")
-const output = ref(null)
+// const codeFromBox = ref("")
+const test = computed(() => questions[currentId.value].testcase)
+
 
 // Define a computed property to get the current item
 const currentIndex = computed(() => questions[currentId.value].id)
 const currentQuestion = computed(() => questions[currentId.value].question)
-const test = computed(() => questions[currentId.value].testcase)
 
 const nextQuestion = () => {
   if (currentId.value < questions.length - 1) {
@@ -24,62 +26,6 @@ const previousQuestion = () => {
     currentId.value--;
   }
 };
-
-    // Return the data and methods to be used in the template
-    function runCode() {
-
-            // Currently running on local Judge0 compiler API for fast feedback
-            // Will use Jdoodle API later.
-            // Function to run code on Judge0
-            async function runCodeOnJudge0(input_code, input, output) {
-                try {
-                    const apiUrl = 'http://192.168.1.108:2358/submissions?wait=true';
-
-                    const requestBody = {
-                        source_code: input_code,
-                        language_id: 71, // Specify the language ID (e.g., 71 for Python)
-                        stdin: input, // Optional standard input for the code
-                        
-                        // TODO: expected_output is not availble on Jdoodle, will need to be removed
-                        expected_output: output, // Optional expected output for the code
-                    };
-
-                    // Make a POST request to the Judge0 API to submit the code
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(requestBody)
-                    });
-
-                    // Return the submission status and result
-                    return await response.json();
-                } catch (error) {
-                    // Handle any errors that may occur during the API call
-                    console.error('Error:', error.message);
-                }
-            }
-            console.log(test.value[0].testResult)
-            for (let i=0 ; i<= test.value.length - 1; i++) {
-              runCodeOnJudge0(codeFromBox.value, test.value[i].input, test.value[i].output,test.value[i].testResult)
-                    .then(result => {
-                      console.log('Submission Result:', result);
-                      output.value = result.stdout
-                      console.log(output.value)
-                      if (output.value === test.value[i].output) {
-                        test.value[i].testResult = "PASS"
-                        console.log("pass")
-                      }
-                      else test.value[i].testResult = "Fail"
-                      console.log('testResult value', test.value[i].testResult);
-
-                    })
-                    .catch(error => {
-                      console.error('Error:', error.message);
-                    }); 
-            }
-        }
 
 </script>
 
@@ -103,7 +49,8 @@ const previousQuestion = () => {
       </div>
 
     </div>
-    <div class="code-section">
+    <Code :test="test"/>
+    <!-- <div class="code-section">
               <div class="code-heading">Code Here...</div>
               <div class="line">
                 <hr>
@@ -130,7 +77,7 @@ const previousQuestion = () => {
         <button class="code-sectn-btn">Submit</button>
       </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- <div>
       <h3>Testcases</h3>
