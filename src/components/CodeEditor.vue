@@ -2,6 +2,7 @@
 import { ref, computed, reactive } from 'vue'
 import runCodeOnJudge0 from '../utils'
 import { questionBank } from '../data/questionBank.js'
+import { languageMetadata } from '../data/languageMetadata.js'
 
 const questions = reactive(questionBank)
 const codeFromBox = ref('')
@@ -19,17 +20,21 @@ const submit = () => {
     showTestCase.value = false
 }
 
+const languages = ref(languageMetadata)
+const selectedLangauge = ref({
+  id: 71,
+  name: 'Python (3.8.1)',
+  language_code: 'python3',
+  version_index: 4
+}) // Default selected language in dropdown
+
+console.log('testing this:', test.test)
 const runCode = () => {
   summary.value = []
   count.value = 0
   showTestCase.value = false
   for (let i = 0; i <= test.test.length - 1; i++) {
-    runCodeOnJudge0(
-      codeFromBox.value,
-      test.test[i].input,
-      test.test[i].output,
-      test.test[i].testResult
-    )
+    runCodeOnJudge0(codeFromBox.value, test.test[i].input, selectedLangauge.value)
       .then((result) => {
         // console.log('Submission Result:', result)
         output.value = result.stdout
@@ -56,6 +61,12 @@ const runCode = () => {
 
 <template>
   <div class="code-section">
+    <!-- <div v-for="language in languages"> {{ language.id }} - {{ language.language_code }}  </div> -->
+    <select v-model="selectedLangauge">
+      <option v-for="language in languages" :key="language" :value="language">
+        {{ language.name }}
+      </option>
+    </select>
     <div class="code-heading">Code Here...</div>
     <div class="line">
       <hr />
