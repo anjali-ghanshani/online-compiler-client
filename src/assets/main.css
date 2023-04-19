@@ -1,5 +1,8 @@
 body {
     margin: 0px; 
     font-family: 'Montserrat', sans-serif;
-
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px 100px ;
+    grid-template-rows: auto;
+    grid-template-areas: "pb pb pb pb pb" " question question code code side" " question question code code side" " question question code code side" 
 }
