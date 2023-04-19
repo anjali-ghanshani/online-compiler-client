@@ -1,9 +1,18 @@
 <script setup>
-const { currentIndex, currentQuestion, nextQuestion, previousQuestion } = defineProps([
+const {
+  currentIndex,
+  currentQuestion,
+  nextQuestion,
+  previousQuestion,
+  currentQuesInputFormat,
+  currentQuesOutputFormat
+} = defineProps([
   'currentIndex',
   'currentQuestion',
   'nextQuestion',
-  'previousQuestion'
+  'previousQuestion',
+  'currentQuesInputFormat',
+  'currentQuesOutputFormat'
 ])
 </script>
 
@@ -18,12 +27,31 @@ const { currentIndex, currentQuestion, nextQuestion, previousQuestion } = define
       <hr />
     </div>
     <div>
+      <br />
       <div class="question-text">{{ currentQuestion }}</div>
+      <br />
+    </div>
+    <div>
+      <hr />
+      <br />
+      <div class="question-input-output">Input Format:</div>
+      <div>{{ currentQuesInputFormat }}</div>
+      <br />
+    </div>
+    <div>
+      <hr />
+      <br />
+      <div class="question-input-output">Output Format:</div>
+      <div>{{ currentQuesOutputFormat }}</div>
+      <br />
     </div>
   </div>
 </template>
 
 <style scoped>
+.question-input-output {
+  font-weight: 900;
+}
 .heading {
   display: flex;
   justify-content: space-between;
@@ -31,7 +59,7 @@ const { currentIndex, currentQuestion, nextQuestion, previousQuestion } = define
 
 .question {
   padding: 1rem;
-  background-color: #76abdf;
+  background-color: hsla(216, 25%, 30%, 0.363);
   margin: 2rem;
   border: 3px solid black;
   border-radius: 1.25rem;
@@ -44,10 +72,10 @@ const { currentIndex, currentQuestion, nextQuestion, previousQuestion } = define
 .question-btn {
   border-radius: 100%;
   font-size: 20px;
-  height: 50px;
-  width: 50px;
+  height: 52px;
+  width: 52px;
   background-color: white;
-  color: #91ccff;
+  color: #0c3f6b;
   margin: 0.5rem 1rem;
   cursor: pointer;
   border: none;

@@ -9,6 +9,8 @@ const questions = reactive(questionBank)
 const currentId = ref(0)
 
 // Define a computed property to get the current item
+const currentQuesInputFormat = computed(() => questions[currentId.value].input_format)
+const currentQuesOutputFormat = computed(() => questions[currentId.value].output_format)
 const currentIndex = computed(() => questions[currentId.value].id)
 const currentQuestion = computed(() => questions[currentId.value].question)
 const test = computed(() => questions[currentId.value].testcase)
@@ -33,6 +35,8 @@ const previousQuestion = () => {
       :currentIndex="currentIndex"
       :nextQuestion="nextQuestion"
       :previousQuestion="previousQuestion"
+      :currentQuesInputFormat="currentQuesInputFormat"
+      :currentQuesOutputFormat="currentQuesOutputFormat"
     />
     <Code :test="test" />
   </div>
