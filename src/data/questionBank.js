@@ -36,27 +36,27 @@ export const questionBank = [
         testcase: [
             {
                 input: "1 4",
-                output: "NO",
+                output: "NO\n",
                 testResult: null,
             },
             {
                 input: "3 4",
-                output: "YES",
+                output: "YES\n",
                 testResult: null,
             },
             {
                 input: "4 2",
-                output: "NO",
+                output: "NO\n",
                 testResult: null,
             },
             {
                 input: "2 6",
-                output: "YES",
+                output: "YES\n",
                 testResult: null,
             },
             {
                 input: "3 4",
-                output: "YES",
+                output: "YES\n",
                 testResult: null,
             },
         ]
@@ -67,27 +67,27 @@ export const questionBank = [
         testcase: [
             {
                 input: "1 2",
-                output: "3",
+                output: "3\n",
                 testResult: null,
             },
             {
                 input: "7000 200",
-                output: "7200",
+                output: "7200\n",
                 testResult: null,
             },
             {
                 input: "60 200",
-                output: "260",
+                output: "260\n",
                 testResult: null,
             },
             {
                 input: "10 200",
-                output: "300",
+                output: "300\n",
                 testResult: null,
             },
             {
                 input: "100 20",
-                output: "120",
+                output: "120\n",
                 testResult: null,
             },
         ]
@@ -98,27 +98,27 @@ export const questionBank = [
         testcase: [
             {
                 input: "1",
-                output: "10",
+                output: "10\n",
                 testResult: null,
             },
             {
                 input: "3",
-                output: "30",
+                output: "30\n",
                 testResult: null,
             },
             {
                 input: "7",
-                output: "70",
+                output: "70\n",
                 testResult: null,
             },
             {
                 input: "12",
-                output: "30",
+                output: "30\n",
                 testResult: null,
             },
             {
                 input: "10",
-                output: "100",
+                output: "100\n",
                 testResult: null,
             },
         ]
@@ -129,27 +129,27 @@ export const questionBank = [
         testcase: [
             {
                 input: "1",
-                output: "NO",
+                output: "NO\n",
                 testResult: null,
             },
             {
                 input: "6",
-                output: "YES",
+                output: "YES\n",
                 testResult: null,
             },
             {
                 input: "3",
-                output: "NO",
+                output: "NO\n",
                 testResult: null,
             },
             {
                 input: "4",
-                output: "YES",
+                output: "YES\n",
                 testResult: null,
             },
             {
                 input: "3",
-                output: "NO",
+                output: "NO\n",
                 testResult: null,
             },
         ]
