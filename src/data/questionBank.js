@@ -5,7 +5,7 @@ export const questionBank = [
         testcase: [
             {
                 input: '123',
-                output: "123\n",
+                output: "23\n",
                 testResult: null,
             },
             {
