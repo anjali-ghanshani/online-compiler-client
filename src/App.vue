@@ -6,6 +6,7 @@ import './assets/main.css'
 const questions = reactive(questionBank)
 const currentId = ref(0)
 const codeFromBox = ref("")
+const output = ref(null)
 
 // Define a computed property to get the current item
 const currentIndex = computed(() => questions[currentId.value].id)
@@ -59,15 +60,26 @@ const previousQuestion = () => {
                     console.error('Error:', error.message);
                 }
             }
-            runCodeOnJudge0(codeFromBox.value)
+            console.log(test.value[0].testResult)
+            for (let i=0 ; i<= test.value.length - 1; i++) {
+              runCodeOnJudge0(codeFromBox.value, test.value[i].input, test.value[i].output,test.value[i].testResult)
                     .then(result => {
-                        console.log('Submission Result:', result);
-                        output = result.stdout
+                      console.log('Submission Result:', result);
+                      output.value = result.stdout
+                      console.log(output.value)
+                      if (output.value === test.value[i].output) {
+                        test.value[i].testResult = "PASS"
+                        console.log("pass")
+                      }
+                      else test.value[i].testResult = "Fail"
+                      console.log('testResult value', test.value[i].testResult);
+
                     })
                     .catch(error => {
-                        console.error('Error:', error.message);
+                      console.error('Error:', error.message);
                     }); 
-          }
+            }
+        }
 
 </script>
 
@@ -100,7 +112,7 @@ const previousQuestion = () => {
       <h3>Testcases</h3>
       <div v-for="test in test" :key="test.id">
         input - > {{ test.input }}
-        | output - > {{ test.output}}
+        | output - > {{ test.output}} | result -> {{ test.testResult }}
       </div>
     </div>
 
