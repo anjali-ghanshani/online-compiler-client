@@ -1,265 +1,162 @@
 export const questionBank = [
     {
         id: 1,
-        question: "Write a function that returns the largest element in a list.",
+        question: "Write a program that takes a number N as the input, and prints it to the output. \n\n Input Format: The only line contains a single integer.\n\n Output Format: Output the answer in a single line.",
         testcase: [
             {
-                input: 'Anjali',
-                output: "Hello Anjali\n",
+                input: '123',
+                output: "123\n",
                 testResult: null,
             },
             {
-                input: 'Rahul',
-                output: "Hello Rahul\n",
+                input: '434242',
+                output: "434242\n",
                 testResult: null,
             },
             {
-                input: 'AAA',
-                output: "Hello AAA\n",
+                input: '6456',
+                output: "6456\n",
                 testResult: null,
             },
             {
-                input: 'ABC',
-                output: "Hello ABC\n",
+                input: '56756757567657567',
+                output: "56756757567657567\n",
                 testResult: null,
             },
             {
-                input: 'SSS',
-                output: "Hello SS\n",
+                input: '675',
+                output: "675\n",
                 testResult: null,
             }
         ]
     },
     {
         id: 2,
-        question: "Write function that reverses a list, preferably in place.",
+        question: "Chef and Chefina are playing with dice. In one turn, both of them roll their dice at once. They consider a turn to be good if the sum of the numbers on their dice is greater than Given that in a particular turn Chef and Chefina got X and Y on their respective dice, find whether the turn was good.",
         testcase: [
             {
-                input: [1, 2, 3, 4, 5],
-                output: [5, 4, 3, 2, 1],
+                input: "1 4",
+                output: "NO",
                 testResult: null,
             },
             {
-                input: ['Windows', 'macOS', 'Linux'],
-                output: ['Linux', 'macOS', 'Windows'],
+                input: "3 4",
+                output: "YES",
                 testResult: null,
             },
             {
-                input: ['!', '@', '#', '$'],
-                output: ['$', '#', '@', '!'],
+                input: "4 2",
+                output: "NO",
                 testResult: null,
             },
             {
-                input: ['an', 'as', 'qwe'],
-                output: ['qwe', 'as', 'an'],
+                input: "2 6",
+                output: "YES",
                 testResult: null,
             },
             {
-                input: [],
-                output: [],
+                input: "3 4",
+                output: "YES",
                 testResult: null,
-            }
+            },
         ]
     },
     {
         id: 3,
-        question: "Write a program that converts Centigrade to Fahrenheit.",
+        question: "Given two integers A and B, write a program to add these two numbers and output it. \n\n Input Format: The first line contains an integer T, the total number of test cases. Then follow T lines, each line contains two Integers A and B. \n\n Output Format: For each test case, add A and B and display the sum in a new line.",
         testcase: [
             {
-                input: "jedasd",
-                output: "dasdsa",
+                input: "1 2",
+                output: "3",
                 testResult: null,
             },
             {
-                input: ['Windows', 'macOS', 'Linux'],
-                output: ['Linux', 'macOS', 'Windows'],
+                input: "7000 200",
+                output: "7200",
                 testResult: null,
             },
             {
-                input: ['!', '@', '#', '$'],
-                output: ['$', '#', '@', '!'],
+                input: "60 200",
+                output: "260",
                 testResult: null,
             },
             {
-                input: ['an', 'as', 'qwe'],
-                output: ['qwe', 'as', 'an'],
+                input: "10 200",
+                output: "300",
                 testResult: null,
             },
             {
-                input: [],
-                output: [],
+                input: "100 20",
+                output: "120",
                 testResult: null,
-            }
+            },
         ]
     },
     {
         id: 4,
-        question: "Write a program in C that takes minutes as input, and display the total number of hours and minutes.",
+        question: "Chef wants to become fit for which he decided to walk to the office and return home by walking. It is known that Chef's office is X km away from his home. If his office is open on days in a week, find the number of kilometers Chef travels through office trips in a week. \n\n Input Format: First line will contain \n\n T, number of test cases. Then the test cases follow. Each test case contains of a single line consisting of single integer X. \n\n Output Format: For each test case, output the number of kilometers Chef travels through office trips in a week.",
         testcase: [
             {
-                input: ['!', '@', '#', '$'],
-                output: ['Windows', 'macOS', 'Linux'],
+                input: "1",
+                output: "10",
                 testResult: null,
             },
             {
-                input: ['Windows', 'macOS', 'Linux'],
-                output: ['Linux', 'macOS', 'Windows'],
+                input: "3",
+                output: "30",
                 testResult: null,
             },
             {
-                input: ['!', '@', '#', '$'],
-                output: ['$', '#', '@', '!'],
+                input: "7",
+                output: "70",
                 testResult: null,
             },
             {
-                input: ['an', 'as', 'qwe'],
-                output: ['qwe', 'as', 'an'],
+                input: "12",
+                output: "30",
                 testResult: null,
             },
             {
-                input: [],
-                output: [],
+                input: "10",
+                output: "100",
                 testResult: null,
-            }
+            },
         ]
     },
     {
         id: 5,
-        question: "Write a function that takes a number and returns a list of its digits.So for 2342 it should return [2, 3, 4, 2]",
+        question: "Chef is playing Ludo. According to the rules of Ludo, a player can enter a new token into the play only when he rolls a on the die. In the current turn, Chef rolled the number X on the die. Determine if Chef can enter a new token into the play in the current turn or not. \n\n Input Format: The first line contains a single integer T — the number of test cases. Then the test cases follow. The first and only line of each test case contains one integer. X — the number rolled by the Chef on the die. \n\n Output Format: For each test case, output YES if the Chef can enter a new token in the game. Otherwise, output NO. You may print each character of YES and NO in uppercase or lowercase (for example, yes, yEs, Yes will be considered identical).",
         testcase: [
             {
-                input: ['an', 'as', 'qwe'],
-                output: ['qwe', 'as', 'an'],
+                input: "1",
+                output: "NO",
                 testResult: null,
             },
             {
-                input: ['Windows', 'macOS', 'Linux'],
-                output: ['Linux', 'macOS', 'Windows'],
+                input: "6",
+                output: "YES",
                 testResult: null,
             },
             {
-                input: ['!', '@', '#', '$'],
-                output: ['$', '#', '@', '!'],
+                input: "3",
+                output: "NO",
                 testResult: null,
             },
             {
-                input: ['an', 'as', 'qwe'],
-                output: ['qwe', 'as', 'an'],
+                input: "4",
+                output: "YES",
                 testResult: null,
             },
             {
-                input: [],
-                output: [],
+                input: "3",
+                output: "NO",
                 testResult: null,
-            }
+            },
         ]
     }
 ]
 
-// export const testcases = [
-//     [{
-//         input: 'Anjali',
-//         output: "Hello Anjali\n",
-//         testResult: null,
-//     },
-//     {
-//         input: 'Rahul',
-//         output: "Hello Rahul\n",
-//         testResult: null,
-//     },
-//     {
-//         input: 'AAA',
-//         output: "Hello AAA\n",
-//         testResult: null,
-//     },
-//     {
-//         input: 'ABC',
-//         output: "Hello ABC\n",
-//         testResult: null,
-//     },
-//     {
-//         input: 'SSS',
-//         output: "Hello SS\n",
-//         testResult: null,
-//     }]
-//     ,
 
-//     [
-//         {
-//             input: [1, 2, 3, 4, 5],
-//             output: [5, 4, 3, 2, 1],
-//             testResult: null,
-//         },
-//         {
-//             input: ['Windows', 'macOS', 'Linux'],
-//             output: ['Linux', 'macOS', 'Windows'],
-//             testResult: null,
-//         },
-//         {
-//             input: ['!', '@', '#', '$'],
-//             output: ['$', '#', '@', '!'],
-//             testResult: null,
-//         },
-//         {
-//             input: ['an', 'as', 'qwe'],
-//             output: ['qwe', 'as', 'an'],
-//             testResult: null,
-//         },
-//         {
-//             input: [],
-//             output: [],
-//             testResult: null,
-//         }
-//     ],
-//     [{
-//         id: 1,
-//         input: [1, 2, 3, 4],
-//         output: 4,
-//     },
-//     {
-//         id: 2,
-//         input: [3, 4, 8, 2],
-//         output: 8
-//     },
-//     {
-//         id: 3,
-//         input: [98, 54, 23, 11, 5, 4, 2],
-//         output: 98
-//     },
-//     {
-//         id: 4,
-//         input: [2211334456, 222333, 555, 33, 1,],
-//         output: 2211334456,
-//     },
-//     {
-//         id: 5,
-//         input: [5, 7, 0, 6, 4, 33, 2, 11, 2, 34, 5, 66, 77877, 54, 34343, 3, 232, 2, 3],
-//         output: 77877
-//     }],
-//     [
-//         {
-//             input: [1, 2, 3, 4, 5],
-//             output: [5, 4, 3, 2, 1],
-//         },
-//         {
-//             input: ['Windows', 'macOS', 'Linux'],
-//             output: ['Linux', 'macOS', 'Windows'],
-//         },
-//         {
-//             input: ['!', '@', '#', '$'],
-//             output: ['$', '#', '@', '!'],
-//         },
-//         {
-//             input: ['an', 'as', 'qwe'],
-//             output: ['qwe', 'as', 'an'],
-//         },
-//         {
-//             input: [],
-//             output: [],
-//         }
-//     ]
-
-// ]
 
 export default questionBank
 // Write function that reverses a list, preferably in place.
