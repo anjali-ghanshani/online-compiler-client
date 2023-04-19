@@ -1,59 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
-</head>
-<body>
-    <div id="app" >
-        <div class="currentQuestion" >
-            <button @click="previousQuestion">Previous</button>
-            <h1>{{ currentQuestion.id }} - {{currentQuestion.question}}</h1>
-            <button @click="nextQuestion">Next</button>
-        </div>
-        <br>
-        <label for="inputCode">Your code goes here:</label><br>
-        <textarea id="inputCode" class="code-mirror" rows="10" cols="50" v-model="codeFromBox"></textarea>
-        <br>
-        <button v-on:click="runCode()">submit code</button>
-        
-        <br>
-        <h3>
-            
-            Passed test cases -  {{ trueFlagCount }}
-        </h3>
-        <br>
-        <div v-for="test in currentTestcaseSet" key="test.id">
-            <div>testcase{{test.id}}</div>
-            <br>
-            <div>
-               input ->  {{ test.input }} 
-            </div> 
-            <div>
-                output -> {{ test.output}}
-            </div>
-            
-            <div>
-                test result -> {{ test.testResult}}
-            </div>
-            
-            <br>
-        </div>
-        <hr>
-        <h1>Summary :</h1>
-        <ol>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div class="currentQuestion">
+        <button @click="previousQuestion">Previous</button>
+        <h1>{{ currentQuestion.id }} - {{currentQuestion.question}}</h1>
+        <button @click="nextQuestion">Next</button>
+      </div>
+      <br />
+      <label for="inputCode">Your code goes here:</label><br />
+      <textarea
+        id="inputCode"
+        class="code-mirror"
+        rows="10"
+        cols="50"
+        v-model="codeFromBox"
+      ></textarea>
+      <br />
+      <button v-on:click="runCode()">submit code</button>
+
+      <br />
+      <h3>Passed test cases - {{ trueFlagCount }}</h3>
+      <br />
+      <div v-for="test in currentTestcaseSet" key="test.id">
+        <div>testcase{{test.id}}</div>
+        <br />
+        <div>input -> {{ test.input }}</div>
+        <div>output -> {{ test.output}}</div>
+
+        <div>test result -> {{ test.testResult}}</div>
+
+        <br />
+      </div>
+      <hr />
+      <h1>Summary :</h1>
+      <ol>
         <li v-for="(item, index) in testcases">
-            <span v-for="item in item">
-              {{ item.testResult }} | 
-            </span>
-          </li>
-        </ol>
+          <span v-for="item in item"> {{ item.testResult }} | </span>
+        </li>
+      </ol>
     </div>
     <script type="module" src="./App.js"></script>
-</body>
+  </body>
 </html>

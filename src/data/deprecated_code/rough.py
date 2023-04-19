@@ -6,12 +6,12 @@ print(n)
 
 # 2. ##################################
 
-print("YES\n")
+print("YES")
 
 
 # 3. ##################################
 
-T = int(input())
+T = 1
 for _ in range(T):
     # Read integers a and b.
     (a, b) = map(int, input().split(' '))
@@ -29,11 +29,10 @@ print(10*T)
 # 5.
 ##################################
 
-t=int(input())
+t=1
 for t in range(t):
     x=int(input())
     if(x==6):
-        print('yes')
+        print('YES')
     else:
-        print("no")
-
+        print("NO")
