@@ -11,6 +11,8 @@ const test = defineProps(['test'])
 const summary = ref([])
 const count = ref(0)
 const showTestCase = ref(false)
+const userInput = ref(null)
+const userOutput = ref(null)
 
 
 const submit = () => {
@@ -28,15 +30,29 @@ const selectedLangauge = ref({
   version_index: 4
 }) // Default selected language in dropdown
 
-console.log('testing this:', test.test)
-const runCode = () => {
+// 
+const runCodeForUserInput = () => {
+    console.log(userInput.value)
+    runCodeOnJudge0(codeFromBox.value, userInput.value, selectedLangauge.value)
+    .then((result) => {
+      userOutput.value = result.stdout
+      console.log(userOutput.value)
+    })
+    .catch((error) => {
+      console.log('Error:', error.message)
+    })
+}
+
+
+
+const runCodeForTestcaseInput = () => {
   summary.value = []
   count.value = 0
   showTestCase.value = false
   for (let i = 0; i <= test.test.length - 1; i++) {
     runCodeOnJudge0(codeFromBox.value, test.test[i].input, selectedLangauge.value)
       .then((result) => {
-        // console.log('Submission Result:', result)
+        console.log('Submission Result:', result)
         output.value = result.stdout
         // console.log('output.value', output.value)
         // console.log('test.test[i]', test.test[i])
@@ -80,22 +96,34 @@ const runCode = () => {
       placeholder="your code goes here"
       v-model="codeFromBox"
     />
+  <div class="run-code-user-input">
+    <label for="user-input">provide input: </label>
+    <input id="user-input" type="text" v-model="userInput">
+    <button  @click="runCodeForUserInput">run</button>
+    <div class="output-for-user-input">
+      output: 
+      <div class="output">
+        {{userOutput}}
+      </div>
+    </div>
+  </div>
 
     <div class="line">
       <hr />
     </div>
     <br />
     <div v-if="showTestCase" class="count-passing-testcase">{{ count }} / 5 Testcases passed
-      
-    </div>
     <br />
     <div class="line">
       <hr />
     </div>
+    </div>
+
     <div></div>
     <div class="run-n-submit">
+
       <div>
-        <button class="code-sectn-btn" @click="runCode">Run</button>
+        <button class="code-sectn-btn" @click="runCodeForTestcaseInput">Run Testcases</button>
       </div>
       <div>
         <button class="code-sectn-btn">Submit</button>
@@ -136,7 +164,7 @@ const runCode = () => {
 .code-heading {
   font-size: 30px;
   font-weight: bold;
-  margin: 2rem;
+  margin: 2rem 0;
   color: white;
 }
 
@@ -147,5 +175,20 @@ const runCode = () => {
 
 .count-passing-testcase {
   color: #ccc;
+}
+
+#user-input {
+  height: 1rem;
+  margin: 0 .5rem;
+}
+.run-code-user-input {
+  color: #ccc;
+  font-weight: 800;
+}
+
+.run-code-user-input .output {
+  font-style: oblique;
+  color:rgb(58, 218, 44);
+  /* background-color: rgb(206, 153, 255); */
 }
 </style>
