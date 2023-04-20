@@ -1,4 +1,6 @@
 <script setup>
+import { RouterLink } from 'vue-router'
+
 import { ref, computed, reactive } from 'vue'
 import runCodeOnJudge0 from '../utils'
 import { questionBank } from '../data/questionBank.js'
@@ -14,13 +16,12 @@ const showTestCase = ref(false)
 const userInput = ref(null)
 const userOutput = ref(null)
 
-
-const submit = () => {
-    codeFromBox = ''
-    summary.value =[]
-    count = 0
-    showTestCase.value = false
-}
+// const submit = () => {
+//     codeFromBox = ''
+//     summary.value =[]
+//     count = 0
+//     showTestCase.value = false
+// }
 
 const languages = ref(languageMetadata)
 const selectedLangauge = ref({
@@ -30,10 +31,10 @@ const selectedLangauge = ref({
   version_index: 4
 }) // Default selected language in dropdown
 
-// 
+//
 const runCodeForUserInput = () => {
-    console.log(userInput.value)
-    runCodeOnJudge0(codeFromBox.value, userInput.value, selectedLangauge.value)
+  console.log(userInput.value)
+  runCodeOnJudge0(codeFromBox.value, userInput.value, selectedLangauge.value)
     .then((result) => {
       userOutput.value = result.stdout
       console.log(userOutput.value)
@@ -42,8 +43,6 @@ const runCodeForUserInput = () => {
       console.log('Error:', error.message)
     })
 }
-
-
 
 const runCodeForTestcaseInput = () => {
   summary.value = []
@@ -69,15 +68,12 @@ const runCodeForTestcaseInput = () => {
         console.error('Error:', error.message)
       })
   }
-  showTestCase.value = true 
+  showTestCase.value = true
 }
-
-
 </script>
 
 <template>
   <div class="code-section">
-    <!-- <div v-for="language in languages"> {{ language.id }} - {{ language.language_code }}  </div> -->
     <select v-model="selectedLangauge">
       <option v-for="language in languages" :key="language" :value="language">
         {{ language.name }}
@@ -96,37 +92,37 @@ const runCodeForTestcaseInput = () => {
       placeholder="your code goes here"
       v-model="codeFromBox"
     />
-  <div class="run-code-user-input">
-    <label for="user-input">provide input: </label>
-    <input id="user-input" type="text" v-model="userInput">
-    <button  @click="runCodeForUserInput">run</button>
-    <div class="output-for-user-input">
-      output: 
-      <div class="output">
-        {{userOutput}}
+    <div class="run-code-user-input">
+      <label for="user-input">provide input: </label>
+      <input id="user-input" type="text" v-model="userInput" />
+      <button @click="runCodeForUserInput">run</button>
+      <div class="output-for-user-input">
+        output:
+        <div class="output">
+          {{ userOutput }}
+        </div>
       </div>
     </div>
-  </div>
 
     <div class="line">
       <hr />
     </div>
     <br />
-    <div v-if="showTestCase" class="count-passing-testcase">{{ count }} / 5 Testcases passed
-    <br />
-    <div class="line">
-      <hr />
-    </div>
+    <div v-if="showTestCase" class="count-passing-testcase">
+      {{ count }} / 5 Testcases passed
+      <br />
+      <div class="line">
+        <hr />
+      </div>
     </div>
 
     <div></div>
     <div class="run-n-submit">
-
       <div>
         <button class="code-sectn-btn" @click="runCodeForTestcaseInput">Run Testcases</button>
       </div>
       <div>
-        <button class="code-sectn-btn">Submit</button>
+        <RouterLink class="code-sectn-btn" to="/">Submit</RouterLink>
       </div>
     </div>
   </div>
@@ -134,9 +130,12 @@ const runCodeForTestcaseInput = () => {
 
 <style scoped>
 .code-sectn-btn {
+  text-decoration: none;
+  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.25);
+
   border-radius: 10px;
   font-size: 20px;
-  color: #002244;
+  color: black;
   background-color: white;
   border: none;
   padding: 10px 20px;
@@ -155,11 +154,12 @@ const runCodeForTestcaseInput = () => {
 
 .code-section {
   padding: 1rem;
-  background-color: #002244;
+  background-color: #505050;
   margin: 2rem;
   border: 3px solid black;
   border-radius: 1.25rem;
   width: 100%;
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.25);
 }
 .code-heading {
   font-size: 30px;
@@ -171,7 +171,7 @@ const runCodeForTestcaseInput = () => {
 .run-n-submit {
   display: flex;
   justify-content: space-between;
-  }
+}
 
 .count-passing-testcase {
   color: #ccc;
@@ -179,7 +179,7 @@ const runCodeForTestcaseInput = () => {
 
 #user-input {
   height: 1rem;
-  margin: 0 .5rem;
+  margin: 0 0.5rem;
 }
 .run-code-user-input {
   color: #ccc;
@@ -188,7 +188,6 @@ const runCodeForTestcaseInput = () => {
 
 .run-code-user-input .output {
   font-style: oblique;
-  color:rgb(58, 218, 44);
-  /* background-color: rgb(206, 153, 255); */
+  color: #3aac30;
 }
 </style>

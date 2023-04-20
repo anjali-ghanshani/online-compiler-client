@@ -5,7 +5,6 @@ export default async function runCodeOnJudge0(input_code, input, selected_langua
   try {
     const apiUrl = 'http://192.168.1.108:2358/submissions?wait=true'
 
-
     const requestBody = {
       source_code: input_code,
       language_id: selected_language.id,

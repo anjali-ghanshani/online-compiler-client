@@ -1,53 +1,71 @@
 <script setup>
-import { reactive, ref, computed } from 'vue'
-import { questionBank } from './data/questionBank.js'
+import { RouterView } from 'vue-router'
 import './assets/main.css'
-import Code from './components/CodeEditor.vue'
-import Question from './components/Question.vue'
-
-const questions = reactive(questionBank)
-const currentId = ref(0)
-
-// Define a computed property to get the current item
-const currentQuesInputFormat = computed(() => questions[currentId.value].input_format)
-const currentQuesOutputFormat = computed(() => questions[currentId.value].output_format)
-const currentIndex = computed(() => questions[currentId.value].id)
-const currentQuestion = computed(() => questions[currentId.value].question)
-const test = computed(() => questions[currentId.value].testcase)
-
-const nextQuestion = () => {
-  if (currentId.value < questions.length - 1) {
-    currentId.value++
-  }
-}
-
-const previousQuestion = () => {
-  if (currentId.value > 0) {
-    currentId.value--
-  }
-}
+import HomeVue from './views/HomeView.vue'
+import QuizVue from './views/QuizView.vue'
 </script>
 
 <template>
   <div class="container">
-    <Question
-      :currentQuestion="currentQuestion"
-      :currentIndex="currentIndex"
-      :nextQuestion="nextQuestion"
-      :previousQuestion="previousQuestion"
-      :currentQuesInputFormat="currentQuesInputFormat"
-      :currentQuesOutputFormat="currentQuesOutputFormat"
-    />
-    <Code :test="test" />
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
+    <RouterView />
   </div>
 </template>
 
 <style scoped>
+.bg {
+  animation: slide 10s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, #f5e12d 50%, #272727 50%);
+  bottom: 0;
+  left: -50%;
+  opacity: 0.5;
+  position: fixed;
+  right: -50%;
+  top: 0;
+  z-index: -1;
+}
+
+.bg2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 12s;
+}
+
+.bg3 {
+  animation-duration: 15s;
+}
+
+.content {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0.25em;
+  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  left: 50%;
+  padding: 10vmin;
+  position: fixed;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h1 {
+  font-family: monospace;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
+}
+
 .container {
   display: flex;
-  background-color: #8da399;
   height: 100vh;
   width: 100vw;
-  padding: 1rem;
+  /* padding: 1rem; */
 }
 </style>

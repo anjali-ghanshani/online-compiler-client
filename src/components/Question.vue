@@ -53,13 +53,15 @@ const {
   font-weight: 900;
 }
 .heading {
+  color: white;
   display: flex;
   justify-content: space-between;
 }
 
 .question {
+  color: white;
   padding: 1rem;
-  background-color: hsla(216, 25%, 30%, 0.363);
+  background-color: #505050;
   margin: 2rem;
   border: 3px solid black;
   border-radius: 1.25rem;
@@ -75,7 +77,7 @@ const {
   height: 52px;
   width: 52px;
   background-color: white;
-  color: #0c3f6b;
+  color: black;
   margin: 0.5rem 1rem;
   cursor: pointer;
   border: none;
