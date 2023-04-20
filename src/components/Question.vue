@@ -81,6 +81,7 @@ const {
   margin: 0.5rem 1rem;
   cursor: pointer;
   border: none;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.25);
 }
 
 .line {

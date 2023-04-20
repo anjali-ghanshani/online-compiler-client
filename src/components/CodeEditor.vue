@@ -1,10 +1,11 @@
 <script setup>
 import { RouterLink } from 'vue-router'
-
+import { EditorState } from '@codemirror/state'
 import { ref, computed, reactive } from 'vue'
 import runCodeOnJudge0 from '../utils'
 import { questionBank } from '../data/questionBank.js'
 import { languageMetadata } from '../data/languageMetadata.js'
+import { Codemirror } from 'vue-codemirror'
 
 const questions = reactive(questionBank)
 const codeFromBox = ref('')
@@ -84,14 +85,23 @@ const runCodeForTestcaseInput = () => {
       <hr />
     </div>
 
-    <textarea
-      id="inputCode"
-      class="code-mirror"
-      rows="15"
-      cols="100"
-      placeholder="your code goes here"
+    <codemirror
       v-model="codeFromBox"
+      placeholder="Code goes here..."
+      :style="{
+        height: '400px',
+        color: 'white',
+        fontSize: '20px',
+        fontFamily: 'monospace',
+        backgroundColor: 'black'
+      }"
+      :autofocus="true"
+      :indent-with-tab="true"
+      :tab-size="2"
     />
+    <div class="line">
+      <hr />
+    </div>
     <div class="run-code-user-input">
       <label for="user-input">provide input: </label>
       <input id="user-input" type="text" v-model="userInput" />
@@ -104,16 +114,11 @@ const runCodeForTestcaseInput = () => {
       </div>
     </div>
 
-    <div class="line">
-      <hr />
-    </div>
-    <br />
     <div v-if="showTestCase" class="count-passing-testcase">
       {{ count }} / 5 Testcases passed
-      <br />
-      <div class="line">
+      <!-- <div class="line">
         <hr />
-      </div>
+      </div> -->
     </div>
 
     <div></div>
@@ -121,9 +126,9 @@ const runCodeForTestcaseInput = () => {
       <div>
         <button class="code-sectn-btn" @click="runCodeForTestcaseInput">Run Testcases</button>
       </div>
-      <div>
-        <RouterLink class="code-sectn-btn" to="/">Submit</RouterLink>
-      </div>
+      <!-- <div> -->
+      <!-- <RouterLink class="code-sectn-btn" to="/">Submit</RouterLink> -->
+      <!-- </div> -->
     </div>
   </div>
 </template>
@@ -141,15 +146,6 @@ const runCodeForTestcaseInput = () => {
   padding: 10px 20px;
   cursor: pointer;
   margin-top: 1rem;
-}
-
-.code-mirror {
-  background-attachment: local;
-  background-image: linear-gradient(to right, white 10px, transparent 10px),
-    linear-gradient(to left, white 10px, transparent 10px),
-    repeating-linear-gradient(white, white 30px, #ccc 30px, #ccc 31px, white 31px);
-  line-height: 31px;
-  padding: 8px 10px;
 }
 
 .code-section {
@@ -172,6 +168,9 @@ const runCodeForTestcaseInput = () => {
   display: flex;
   justify-content: space-between;
 }
+.output-for-user-input {
+  margin-top: 1rem;
+}
 
 .count-passing-testcase {
   color: #ccc;
@@ -179,9 +178,10 @@ const runCodeForTestcaseInput = () => {
 
 #user-input {
   height: 1rem;
-  margin: 0 0.5rem;
+  margin-right: 0.5rem;
 }
 .run-code-user-input {
+  margin: 1rem 0;
   color: #ccc;
   font-weight: 800;
 }
