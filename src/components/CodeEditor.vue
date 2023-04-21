@@ -127,7 +127,7 @@ const runCodeForTestcaseInput = () => {
         <button class="code-sectn-btn" @click="runCodeForTestcaseInput">Run Testcases</button>
       </div>
       <!-- <div> -->
-      <!-- <RouterLink class="code-sectn-btn" to="/">Submit</RouterLink> -->
+      <!-- <RouterLink class="code-sectn-btn" to="/result">Submit</RouterLink> -->
       <!-- </div> -->
     </div>
   </div>

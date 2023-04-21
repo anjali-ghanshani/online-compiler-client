@@ -19,9 +19,9 @@ const {
 <template>
   <div class="question">
     <div class="heading">
-      <button class="question-btn" @click="previousQuestion">Prev</button>
+      <button class="question-btn" @click="previousQuestion">&lArr;</button>
       <h1>Question {{ currentIndex }}</h1>
-      <button class="question-btn" @click="nextQuestion">Next</button>
+      <button class="question-btn" @click="nextQuestion">&rArr;</button>
     </div>
     <div class="line">
       <hr />
