@@ -105,7 +105,7 @@ const allQuestions = [
     question:
       "Chef wants to become fit for which he decided to walk to the office and return home by walking. It is known that Chef's office is X km away from his home. If his office is open on days in a week, find the number of kilometers Chef travels through office trips in a week.",
     input_format:
-      'First line will contain T, number of test cases. Then the test cases follow. Each test case contains of a single line consisting of single integer X.',
+      'Each test case contains of a single line consisting of single integer X.',
     output_format:
       'For each test case, output the number of kilometers Chef travels through office trips in a week.',
     testcase: [
@@ -141,9 +141,9 @@ const allQuestions = [
     question:
       'Chef is playing Ludo. According to the rules of Ludo, a player can enter a new token into the play only when he rolls a on the die. In the current turn, Chef rolled the number X on the die. Determine if Chef can enter a new token into the play in the current turn or not.',
     input_format:
-      'The first line contains a single integer T — the number of test cases. Then the test cases follow. The first and only line of each test case contains one integer. X — the number rolled by the Chef on the die.',
+      'each test case contains one integer. X — the number rolled by the Chef on the die.',
     output_format:
-      'For each test case, output YES if the Chef can enter a new token in the game. Otherwise, output NO. You may print each character of YES and NO in uppercase or lowercase (for example, yes, yEs, Yes will be considered identical).',
+      'For each test case, output YES if the Chef can enter a new token in the game. Otherwise, output NO.',
     testcase: [
       {
         input: '1',
@@ -177,7 +177,7 @@ const allQuestions = [
     question:
       'In Chefland, a tax of rupees is deducted if the total income is strictly greater than rupees. Given that total income is X rupees, find out how much money you get.',
     input_format:
-      'The first and only line of each test case contains a single integer X — your total income.',
+      'Each test case contains a single integer X — your total income.',
     output_format: 'For each test case, output on a new line, the amount of money you get.',
     testcase: [
       {
