@@ -26,7 +26,7 @@ const submit = () => {
       if (test.value[i].testcase[j].testResult === 1) totalScore.value++
     }
   }
-  
+  console.log(test.value)
   emit('totalScoreEmit', totalScore.value)
 }
 const testList = computed(() => test.value[i.currentIndex - 1].testcase)
@@ -70,8 +70,6 @@ const runCodeForTestcaseInput = () => {
       })
   }
   showTestcaseResult.value = true
-  console.log(test.value)
-  console.log(totalScore.value)
 }
 </script>
 
@@ -89,6 +87,7 @@ const runCodeForTestcaseInput = () => {
 
     <codemirror
       v-model="codeFromBox"
+      :value="codeFromBox"
       placeholder="Code goes here..."
       :style="{
         height: '300px',

@@ -1,11 +1,13 @@
 <script setup>
 const {
+  currentIndex,
   currentQuestion,
   nextQuestion,
   previousQuestion,
   currentQuesInputFormat,
   currentQuesOutputFormat
 } = defineProps([
+  'currentIndex',
   'currentQuestion',
   'nextQuestion',
   'previousQuestion',
@@ -20,7 +22,7 @@ const {
   <div class="question">
     <div class="heading">
       <button class="question-btn" @click="previousQuestion">&lArr;</button>
-      <h1>Question</h1>
+      <h1>Question {{ currentIndex }}</h1>
       <button class="question-btn" @click="nextQuestion">&rArr;</button>
     </div>
     <div class="line">
@@ -28,7 +30,7 @@ const {
     </div>
     <div>
       <br />
-      <div class="question-text">{{ currentQuestion }}</div>
+      <div class="question-text"> {{ currentQuestion }}</div>
       <br />
     </div>
     <div>
