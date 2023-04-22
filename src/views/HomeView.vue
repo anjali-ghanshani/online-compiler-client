@@ -23,5 +23,14 @@ import { RouterLink } from 'vue-router'
   box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.5);
   border-radius: 0.5rem;
   border: 3px solid black;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.home-button:hover {
+    /* box-shadow: 0 0 0.25em rgb(255, 255, 255); */
+
+  border: 3px solid white;
+  background-color: black;
+  color: white;
 }
 </style>

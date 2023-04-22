@@ -7,6 +7,7 @@ import { questionBank } from '../data/questionBank.js'
 import { languageMetadata } from '../data/languageMetadata.js'
 import { Codemirror } from 'vue-codemirror'
 import Result from './Result.vue'
+
 const codeFromBox = ref('')
 const output = ref(null)
 const i = defineProps(['currentIndex'])
@@ -15,9 +16,15 @@ const test = ref(questionBank)
 const count = ref(0)
 const userInput = ref(null)
 const userOutput = ref(null)
-
 const totalScore = ref(0)
 
+// function getShortlistedQuestions(questionBank10) {
+//   const randomQuestions = questionBank10.sort(() => 0.5 - Math.random()).slice(0, 5);
+//   return randomQuestions
+// }
+
+// const questionBank = getShortlistedQuestions(questionBank10)
+console.log(questionBank)
 const submit = () => {
   totalScore.value = 0
   codeFromBox.value = ''
@@ -31,7 +38,6 @@ const submit = () => {
     }
   }
   emit('totalScoreEmit', totalScore.value)
-  // flag.showResult = true
 }
 const testList = computed(() => test.value[i.currentIndex - 1].testcase)
 const languages = ref(languageMetadata)
@@ -42,7 +48,6 @@ const selectedLangauge = ref({
   version_index: 4
 }) // Default selected language in dropdown
 
-//
 const runCodeForUserInput = () => {
   console.log(userInput.value)
   runCodeOnJudge0(codeFromBox.value, userInput.value, selectedLangauge.value)
@@ -81,12 +86,12 @@ const runCodeForTestcaseInput = () => {
 
 <template>
   <div class="code-section">
-    <select v-model="selectedLangauge">
+    <select class="select-lang" v-model="selectedLangauge">
       <option v-for="language in languages" :key="language" :value="language">
         {{ language.name }}
       </option>
     </select>
-    <div class="code-heading">Code Here... {{ currentIndex }}</div>
+    <div class="code-heading">Your Solution</div>
     <div class="line">
       <hr />
     </div>
@@ -95,9 +100,9 @@ const runCodeForTestcaseInput = () => {
       v-model="codeFromBox"
       placeholder="Code goes here..."
       :style="{
-        height: '400px',
+        height: '300px',
         color: 'white',
-        fontSize: '20px',
+        fontSize: '15px',
         fontFamily: 'monospace',
         backgroundColor: 'black'
       }"
@@ -121,27 +126,12 @@ const runCodeForTestcaseInput = () => {
     </div>
 
     <div class="count-passing-testcase">
-      {{ count }} / 5 Testcases passed
-      <!-- <div class="line">
-        <hr />
-      </div> -->
+      {{ count }} / 5 Testcases passed for this question!
     </div>
 
-    <div></div>
     <div class="run-n-submit">
       <div>
-        <button class="code-sectn-btn" @click="runCodeForTestcaseInput">Run Testcases</button>
-      </div>
-      <div class="summary">
-        <h1>Summary :</h1>
-        <!-- <ol> -->
-        <!-- <li v-for="item in test"> -->
-        {{ totalScore }}
-        <!-- <span v-for="t in item.testcase"> -->
-        <!-- {{ t.testResult }} -->
-        <!-- </span> -->
-        <!-- </li> -->
-        <!-- </ol> -->
+        <button class="code-sectn-btn" @click="runCodeForTestcaseInput">Run Tests</button>
       </div>
       <div>
         <button class="code-sectn-btn" @click="submit">Submit</button>
@@ -151,6 +141,13 @@ const runCodeForTestcaseInput = () => {
 </template>
 
 <style scoped>
+.select-lang {
+    background-color: #f5e12d;
+  border: 2px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+
+}
 .code-sectn-btn {
   text-decoration: none;
   box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.25);
@@ -158,8 +155,8 @@ const runCodeForTestcaseInput = () => {
   border-radius: 10px;
   font-size: 20px;
   color: black;
-  background-color: white;
-  border: none;
+  background-color: #f5e12d;
+  border: 2px solid black;
   padding: 10px 20px;
   cursor: pointer;
   margin-top: 1rem;
@@ -168,18 +165,21 @@ const runCodeForTestcaseInput = () => {
 .code-section {
   padding: 1rem;
   background-color: #505050;
-  margin: 2rem;
+  margin: 2rem 1rem;
   border: 3px solid black;
   border-radius: 1.25rem;
-  width: 100%;
+  width: 60em;
   box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.25);
 }
 .code-heading {
   font-size: 30px;
   font-weight: bold;
-  margin: 2rem 0;
+  margin: 1rem 0 ;
   color: white;
+  text-align: center;
 }
+
+
 
 .run-n-submit {
   display: flex;
@@ -190,6 +190,7 @@ const runCodeForTestcaseInput = () => {
 }
 
 .count-passing-testcase {
+  font-size: 0.8rem;
   color: #ccc;
 }
 

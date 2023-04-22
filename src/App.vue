@@ -64,8 +64,19 @@ h1 {
 
 .container {
   display: flex;
+  /* grid-template-columns: 1fr 2fr; */
   height: 100vh;
   width: 100vw;
-  /* padding: 1rem; */
+  justify-content: center
+  ;
+  
 }
+
+@media (max-width: 767px) {
+  .container {
+    flex-wrap: wrap;
+  }
+}
+
+
 </style>
