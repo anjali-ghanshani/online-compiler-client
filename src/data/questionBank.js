@@ -348,12 +348,19 @@ const allQuestions = [
   }
 ]
 
+function resetIDofQuestions(questions) {
+  for (let i = 0; i < questions.length; i++) {
+    questions[i].id = i + 1
+  }
+  return questions
+}
+
 function getShortlistedQuestions(allQuestions) {
-  const randomQuestions = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 5)
+  const randomQuestions = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 5);
   return randomQuestions
 }
 
-const questionBank = getShortlistedQuestions(allQuestions)
+const questionBank = resetIDofQuestions(getShortlistedQuestions(allQuestions))
 console.log(questionBank)
 
 export { questionBank }

@@ -14,8 +14,8 @@ const currentQuesOutputFormat = computed(() => questions[currentId.value].output
 const currentIndex = computed(() => questions[currentId.value].id)
 const currentQuestion = computed(() => questions[currentId.value].question)
 
-const questionStatus = computed(() => `${currentId.value}/5`)
-const barPercentage = computed(() => `${(currentId.value / 5) * 100}%`)
+const questionStatus = computed(() => `${currentId.value+1}/5`)
+const barPercentage = computed(() => `${((currentId.value+1) / 5) * 100}%`)
 
 const nextQuestion = () => {
   if (currentId.value < questions.length - 1) {

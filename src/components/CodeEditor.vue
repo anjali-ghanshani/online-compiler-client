@@ -14,7 +14,7 @@ const count = ref(0)
 const userInput = ref(null)
 const userOutput = ref(null)
 const totalScore = ref(0)
-
+let showTestcaseResult = ref(false)
 const submit = () => {
   totalScore.value = 0
   codeFromBox.value = ''
@@ -22,10 +22,11 @@ const submit = () => {
   for (let i = 0; i < 5; i++) {
     for (let j = 0; j < 5; j++) {
       if (test.value[i].testcase[j].testResult === null)
-        return console.log('please attempt all 5 questions!')
+        return alert(`Run testcases for question number ${i+1}`)
       if (test.value[i].testcase[j].testResult === 1) totalScore.value++
     }
   }
+  
   emit('totalScoreEmit', totalScore.value)
 }
 const testList = computed(() => test.value[i.currentIndex - 1].testcase)
@@ -51,7 +52,7 @@ const runCodeForUserInput = () => {
 
 const runCodeForTestcaseInput = () => {
   count.value = 0
-
+  console.log(showTestcaseResult.value)
   for (let i = 0; i <= 4; i++) {
     runCodeonCompilerAPI(codeFromBox.value, testList.value[i].input, selectedLangauge.value)
       .then((result) => {
@@ -68,6 +69,7 @@ const runCodeForTestcaseInput = () => {
         console.error('Error:', error.message)
       })
   }
+  showTestcaseResult.value = true
   console.log(test.value)
   console.log(totalScore.value)
 }
@@ -105,7 +107,7 @@ const runCodeForTestcaseInput = () => {
     <div class="run-code-user-input">
       <label for="user-input">provide input: </label>
       <input id="user-input" type="text" v-model="userInput" />
-      <button @click="runCodeForUserInput">run</button>
+      <button class="user-input-btn" @click="runCodeForUserInput">run</button>
       <div class="output-for-user-input">
         output:
         <div class="output">
@@ -114,7 +116,7 @@ const runCodeForTestcaseInput = () => {
       </div>
     </div>
 
-    <div class="count-passing-testcase">{{ count }} / 5 Testcases passed for this question!</div>
+    <div class="count-passing-testcase" v-if="showTestcaseResult">{{ count }} / 5 Testcases passed for this question!</div>
 
     <div class="run-n-submit">
       <div>
@@ -174,13 +176,22 @@ const runCodeForTestcaseInput = () => {
 }
 
 .count-passing-testcase {
+  font-weight: bolder;
   font-size: 0.8rem;
-  color: #ccc;
+  color: rgb(230, 110, 110);
 }
 
 #user-input {
-  height: 1rem;
+  height: 2rem;
   margin-right: 0.5rem;
+}
+
+.user-input-btn {
+    background-color: #f5e12d;
+  border: 1px solid black;
+  border-radius: .5rem;
+  padding: 8px 10px;
+  font-weight: bold;
 }
 .run-code-user-input {
   margin: 1rem 0;
