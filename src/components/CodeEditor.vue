@@ -19,18 +19,18 @@ const userOutput = ref(null)
 const totalScore = ref(0)
 
 const submit = () => {
-    totalScore.value = 0
-    codeFromBox.value = ''
-    count.value = 0
-  for(let i = 0; i<5;i++) {
-    for(let j = 0; j<5;j++){
+  totalScore.value = 0
+  codeFromBox.value = ''
+  count.value = 0
+  for (let i = 0; i < 5; i++) {
+    for (let j = 0; j < 5; j++) {
       // console.log(test.value[i].testcase[j].testResult)
-      if(test.value[i].testcase[j].testResult === null) return console.log("please attempt all 5 questions!")
-      if(test.value[i].testcase[j].testResult === 1) totalScore.value++
-
+      if (test.value[i].testcase[j].testResult === null)
+        return console.log('please attempt all 5 questions!')
+      if (test.value[i].testcase[j].testResult === 1) totalScore.value++
     }
   }
-  emit("totalScoreEmit", totalScore.value)
+  emit('totalScoreEmit', totalScore.value)
   // flag.showResult = true
 }
 const testList = computed(() => test.value[i.currentIndex - 1].testcase)
@@ -57,8 +57,8 @@ const runCodeForUserInput = () => {
 
 const runCodeForTestcaseInput = () => {
   count.value = 0
-  
-  for (let i = 0; i <= 4 ; i++) {
+
+  for (let i = 0; i <= 4; i++) {
     runCodeOnJudge0(codeFromBox.value, testList.value[i].input, selectedLangauge.value)
       .then((result) => {
         console.log('Submission Result:', result)
@@ -68,18 +68,15 @@ const runCodeForTestcaseInput = () => {
           count.value++
         } else testList.value[i].testResult = 0
 
-        console.log('testResult value', testList.value[i].testResult)      
-        })
+        console.log('testResult value', testList.value[i].testResult)
+      })
       .catch((error) => {
         console.error('Error:', error.message)
       })
   }
-console.log(test.value)
-console.log(totalScore.value)
+  console.log(test.value)
+  console.log(totalScore.value)
 }
-
-
-
 </script>
 
 <template>
@@ -136,19 +133,18 @@ console.log(totalScore.value)
         <button class="code-sectn-btn" @click="runCodeForTestcaseInput">Run Testcases</button>
       </div>
       <div class="summary">
-         <h1>Summary :</h1>
+        <h1>Summary :</h1>
         <!-- <ol> -->
         <!-- <li v-for="item in test"> -->
-           {{ totalScore }}
-            <!-- <span v-for="t in item.testcase"> -->
-              <!-- {{ t.testResult }} -->
-            <!-- </span> -->
-          <!-- </li> -->
+        {{ totalScore }}
+        <!-- <span v-for="t in item.testcase"> -->
+        <!-- {{ t.testResult }} -->
+        <!-- </span> -->
+        <!-- </li> -->
         <!-- </ol> -->
       </div>
       <div>
-        
-      <button class="code-sectn-btn" @click="submit">Submit</button>
+        <button class="code-sectn-btn" @click="submit">Submit</button>
       </div>
     </div>
   </div>

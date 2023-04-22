@@ -16,8 +16,8 @@ const currentIndex = computed(() => questions[currentId.value].id)
 const currentQuestion = computed(() => questions[currentId.value].question)
 // const test = computed(() => questions[currentId.value].testcase)
 
-    const questionStatus = computed(() => `${currentId.value}/5`)
-    const barPercentage = computed(() => `${currentId.value/5 * 100}%`)
+const questionStatus = computed(() => `${currentId.value}/5`)
+const barPercentage = computed(() => `${(currentId.value / 5) * 100}%`)
 
 const nextQuestion = () => {
   if (currentId.value < questions.length - 1) {
@@ -32,16 +32,15 @@ const previousQuestion = () => {
 }
 
 const showResultFunction = (totalScore) => {
-    console.log(totalScore)
-    score = totalScore
-    showResult.value = true
+  console.log(totalScore)
+  score = totalScore
+  showResult.value = true
 }
-
 </script>
 
 <template>
-
-  <Question v-if="!showResult"
+  <Question
+    v-if="!showResult"
     :currentQuestion="currentQuestion"
     :currentIndex="currentIndex"
     :nextQuestion="nextQuestion"
@@ -50,15 +49,14 @@ const showResultFunction = (totalScore) => {
     :currentQuesOutputFormat="currentQuesOutputFormat"
     :questionStatus="questionStatus"
     :barPercentage="barPercentage"
-
   />
-  <CodeEditor v-if="!showResult" :currentIndex="currentIndex"
-  @totalScoreEmit="showResultFunction"/>
+  <CodeEditor
+    v-if="!showResult"
+    :currentIndex="currentIndex"
+    @totalScoreEmit="showResultFunction"
+  />
 
-  <Result v-else :score="score"/>
-
+  <Result v-else :score="score" />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

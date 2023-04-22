@@ -47,13 +47,11 @@ const {
       <div>{{ currentQuesOutputFormat }}</div>
       <br />
       <div class="progress">
-
-        <h4>Question {{questionStatus}}</h4>
+        <h4>Question {{ questionStatus }}</h4>
         <div class="bar">
-            <div class="completion" :style="{width: barPercentage}"></div>
+          <div class="completion" :style="{ width: barPercentage }"></div>
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -105,22 +103,19 @@ const {
   position: absolute;
   bottom: 20px;
   width: 90%;
-
 }
 
-        .bar {
-        /* width: 300px; */
-        height: 26px;
-        border: 2px solid white;
-        border-radius: 1rem 
-    }
+.bar {
+  /* width: 300px; */
+  height: 26px;
+  border: 2px solid white;
+  border-radius: 1rem;
+}
 
-    .completion {
-        height: 100%;
-        width: 0%;
-        background-color: white;
-        border-radius: 1rem 
-
-    }
-
+.completion {
+  height: 100%;
+  width: 0%;
+  background-color: white;
+  border-radius: 1rem;
+}
 </style>

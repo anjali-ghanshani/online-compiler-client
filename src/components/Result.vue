@@ -8,8 +8,8 @@ const result = defineProps(['score'])
 <template>
   <div class="modal">
     <div class="modal_title">Your Score</div>
-    <div class="modal_text">{{result.score}}/25</div>
-    <div>{{result.score}} testcases passed out of 25</div>
+    <div class="modal_text">{{ result.score }}/25</div>
+    <div>{{ result.score }} testcases passed out of 25</div>
     <RouterLink to="/">
       <button class="modal_btn">Go Back &rarr;</button>
     </RouterLink>
