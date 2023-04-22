@@ -120,4 +120,10 @@ const {
   background-color: #f5e12d;
   border-radius: 1rem;
 }
+
+@media (max-width: 767px) {
+    .progress {
+      position: initial;
+    }
+}
 </style>
