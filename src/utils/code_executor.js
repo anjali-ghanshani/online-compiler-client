@@ -3,7 +3,6 @@
 // Function to run code on Judge0
 export default async function runCodeOnJudge0(input_code, input, selected_language) {
   try {
-
     // Need temporary proxy to fix cors error
     const proxy = 'https://cors-anywhere.herokuapp.com/'
     const apiUrl = 'https://api.jdoodle.com/v1/execute/'
@@ -25,7 +24,7 @@ export default async function runCodeOnJudge0(input_code, input, selected_langua
       },
       body: JSON.stringify(requestBody)
     })
-    console.log("Req: ", requestBody)
+    console.log('Req: ', requestBody)
     // Return the submission status and result
     return await response.json()
   } catch (error) {
