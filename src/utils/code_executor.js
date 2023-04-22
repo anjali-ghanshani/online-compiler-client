@@ -1,4 +1,4 @@
-export default async function runCodeOnJudge0(input_code, input, selected_language) {
+export default async function runCodeonCompilerAPI(input_code, input, selected_language) {
   try {
     // Need temporary proxy to fix cors error
     const proxy = 'https://cors-anywhere.herokuapp.com/'

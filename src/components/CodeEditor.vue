@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
-import runCodeOnJudge0 from '../utils/code_executor'
+import runCodeonCompilerAPI from '../utils/code_executor'
 import { questionBank } from '../data/questionBank.js'
 import { languageMetadata } from '../data/languageMetadata.js'
 import { Codemirror } from 'vue-codemirror'
@@ -39,7 +39,7 @@ const selectedLangauge = ref({
 
 const runCodeForUserInput = () => {
   console.log(userInput.value)
-  runCodeOnJudge0(codeFromBox.value, userInput.value, selectedLangauge.value)
+  runCodeonCompilerAPI(codeFromBox.value, userInput.value, selectedLangauge.value)
     .then((result) => {
       userOutput.value = result.output
       console.log(userOutput.value)
@@ -53,7 +53,7 @@ const runCodeForTestcaseInput = () => {
   count.value = 0
 
   for (let i = 0; i <= 4; i++) {
-    runCodeOnJudge0(codeFromBox.value, testList.value[i].input, selectedLangauge.value)
+    runCodeonCompilerAPI(codeFromBox.value, testList.value[i].input, selectedLangauge.value)
       .then((result) => {
         console.log('Submission Result:', result)
         output.value = result.output
