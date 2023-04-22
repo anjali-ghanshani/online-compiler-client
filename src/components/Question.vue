@@ -1,13 +1,11 @@
 <script setup>
 const {
-  currentIndex,
   currentQuestion,
   nextQuestion,
   previousQuestion,
   currentQuesInputFormat,
   currentQuesOutputFormat
 } = defineProps([
-  'currentIndex',
   'currentQuestion',
   'nextQuestion',
   'previousQuestion',
@@ -22,7 +20,7 @@ const {
   <div class="question">
     <div class="heading">
       <button class="question-btn" @click="previousQuestion">&lArr;</button>
-      <h1>Question {{ currentIndex }}</h1>
+      <h1>Question</h1>
       <button class="question-btn" @click="nextQuestion">&rArr;</button>
     </div>
     <div class="line">
@@ -64,6 +62,11 @@ const {
   color: white;
   display: flex;
   justify-content: space-between;
+  vertical-align: middle;
+}
+
+.heading h1 {
+  margin-top: 1rem;
 }
 
 .question {
@@ -71,10 +74,10 @@ const {
   color: white;
   padding: 1rem;
   background-color: #505050;
-  margin: 2rem;
+  margin: 2rem 1rem;
   border: 3px solid black;
   border-radius: 1.25rem;
-  width: 50rem;
+  width: 40em;
 }
 
 .question-text {
@@ -86,7 +89,7 @@ const {
   font-size: 20px;
   height: 52px;
   width: 52px;
-  background-color: white;
+  background-color: #f5e12d;
   color: black;
   margin: 0.5rem 1rem;
   cursor: pointer;
@@ -106,7 +109,6 @@ const {
 }
 
 .bar {
-  /* width: 300px; */
   height: 26px;
   border: 2px solid white;
   border-radius: 1rem;
@@ -115,7 +117,7 @@ const {
 .completion {
   height: 100%;
   width: 0%;
-  background-color: white;
+  background-color: #f5e12d;
   border-radius: 1rem;
 }
 </style>

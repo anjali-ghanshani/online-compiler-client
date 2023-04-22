@@ -1,4 +1,4 @@
-export const questionBank = [
+const allQuestions = [
   {
     id: 1,
     question: 'Write a program that takes a number N as the input, and prints it to the output.',
@@ -105,7 +105,7 @@ export const questionBank = [
     question:
       "Chef wants to become fit for which he decided to walk to the office and return home by walking. It is known that Chef's office is X km away from his home. If his office is open on days in a week, find the number of kilometers Chef travels through office trips in a week.",
     input_format:
-      'First line will contain T, number of test cases. Then the test cases follow. Each test case contains of a single line consisting of single integer X.',
+      'Each test case contains of a single line consisting of single integer X.',
     output_format:
       'For each test case, output the number of kilometers Chef travels through office trips in a week.',
     testcase: [
@@ -141,9 +141,9 @@ export const questionBank = [
     question:
       'Chef is playing Ludo. According to the rules of Ludo, a player can enter a new token into the play only when he rolls a on the die. In the current turn, Chef rolled the number X on the die. Determine if Chef can enter a new token into the play in the current turn or not.',
     input_format:
-      'The first line contains a single integer T — the number of test cases. Then the test cases follow. The first and only line of each test case contains one integer. X — the number rolled by the Chef on the die.',
+      'each test case contains one integer. X — the number rolled by the Chef on the die.',
     output_format:
-      'For each test case, output YES if the Chef can enter a new token in the game. Otherwise, output NO. You may print each character of YES and NO in uppercase or lowercase (for example, yes, yEs, Yes will be considered identical).',
+      'For each test case, output YES if the Chef can enter a new token in the game. Otherwise, output NO.',
     testcase: [
       {
         input: '1',
@@ -171,7 +171,196 @@ export const questionBank = [
         testResult: null
       }
     ]
+  },
+  {
+    id: 6,
+    question:
+      'In Chefland, a tax of rupees is deducted if the total income is strictly greater than rupees. Given that total income is X rupees, find out how much money you get.',
+    input_format:
+      'Each test case contains a single integer X — your total income.',
+    output_format: 'For each test case, output on a new line, the amount of money you get.',
+    testcase: [
+      {
+        input: '5',
+        output: '5\n',
+        testResult: null
+      },
+      {
+        input: '105',
+        output: '95\n',
+        testResult: null
+      },
+      {
+        input: '101',
+        output: '91\n',
+        testResult: null
+      },
+      {
+        input: '100',
+        output: '100\n',
+        testResult: null
+      },
+      {
+        input: '200',
+        output: '210\n',
+        testResult: null
+      }
+    ]
+  },
+  {
+    id: 7,
+    question:
+      "Chef's dog binary hears frequencies starting from Hertz to Hert (both inclusive). If Chef's commands have a frequency of X Hertz, find whether binary can hear them or not.",
+    input_format:
+      "Each test case consists of a single integer X - the frequency of Chef's commands in Hertz",
+    output_format: 'Prints out YES or NO string',
+    testcase: [
+      {
+        input: '42',
+        output: 'NO\n',
+        testResult: null
+      },
+      {
+        input: '67',
+        output: 'YES\n',
+        testResult: null
+      },
+      {
+        input: '402',
+        output: 'YES\n',
+        testResult: null
+      },
+      {
+        input: '45000',
+        output: 'YES\n',
+        testResult: null
+      },
+      {
+        input: '45005',
+        output: 'NO\n',
+        testResult: null
+      }
+    ]
+  },
+  {
+    id: 8,
+    question:
+      'Chef has recently moved into an apartment. It takes minutes for Chef to reach office from the apartment. Chef left for the office X minutes before Chef was supposed to reach. Determine whether or not Chef will be able to reach on time.',
+    input_format: 'Each test case consists of a single integer X.',
+    output_format: 'For each test case, output YES if Chef will reach on time, NO otherwise.',
+    testcase: [
+      {
+        input: '30',
+        output: 'YES\n',
+        testResult: null
+      },
+      {
+        input: '60',
+        output: 'YES\n',
+        testResult: null
+      },
+      {
+        input: '14',
+        output: 'NO\n',
+        testResult: null
+      },
+      {
+        input: '29',
+        output: 'NO\n',
+        testResult: null
+      },
+      {
+        input: '29',
+        output: 'YES\n',
+        testResult: null
+      }
+    ]
+  },
+  {
+    id: 9,
+    question:
+      "Alice and Bob were having an argument about which of them is taller than the other. Charlie got irritated by the argument, and decided to settle the matter once and for all. Charlie measured the heights of Alice and Bob, and got to know that Alice's height is X centimeters and Bob's height is Y centimeters. Help Charlie decide who is taller. It is guaranteed that X!=Y",
+    input_format:
+      'The first and only line of each test case contains two integers X and Y, as described in the problem statement.',
+    output_format: 'A if Alice is taller than Bob, else output B',
+    testcase: [
+      {
+        input: '150 160',
+        output: 'B\n',
+        testResult: null
+      },
+      {
+        input: '160 150',
+        output: 'A\n',
+        testResult: null
+      },
+      {
+        input: '260 250',
+        output: 'A\n',
+        testResult: null
+      },
+      {
+        input: '110 100',
+        output: 'A\n',
+        testResult: null
+      },
+      {
+        input: '102 201',
+        output: 'B\n',
+        testResult: null
+      }
+    ]
+  },
+  {
+    id: 10,
+    question:
+      'King loves to go on tours with his friends. King has N cars that can seat 5 people each and M cars that can seat 7 people each. Determine the maximum number of people that can travel together in these cars.',
+    input_format: 'N and M — the number of 5-seaters and 7-seaters, respectively.',
+    output_format:
+      'For each test case, output on a new line the maximum number of people that can travel together.',
+    testcase: [
+      {
+        input: '4 8',
+        output: '76\n',
+        testResult: null
+      },
+      {
+        input: '2 13',
+        output: '101\n',
+        testResult: null
+      },
+      {
+        input: '14 5',
+        output: '105\n',
+        testResult: null
+      },
+      {
+        input: '8 8',
+        output: '96\n',
+        testResult: null
+      },
+      {
+        input: '2 13',
+        output: '101\n',
+        testResult: null
+      }
+    ]
   }
 ]
 
-export default questionBank
+function resetIDofQuestions(questions) {
+  for (let i = 0; i < questions.length; i++) {
+    questions[i].id = i + 1
+  }
+  return questions
+}
+
+function getShortlistedQuestions(allQuestions) {
+  const randomQuestions = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 5);
+  return randomQuestions
+}
+
+const questionBank = resetIDofQuestions(getShortlistedQuestions(allQuestions))
+console.log(questionBank)
+
+export { questionBank }

@@ -1,8 +1,6 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import './assets/main.css'
-import HomeVue from './views/HomeView.vue'
-import QuizVue from './views/QuizView.vue'
 </script>
 
 <template>
@@ -66,6 +64,12 @@ h1 {
   display: flex;
   height: 100vh;
   width: 100vw;
-  /* padding: 1rem; */
+  justify-content: center;
+}
+
+@media (max-width: 767px) {
+  .container {
+    flex-wrap: wrap;
+  }
 }
 </style>
