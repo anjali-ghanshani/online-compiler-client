@@ -6,24 +6,34 @@ import runCodeOnJudge0 from '../utils'
 import { questionBank } from '../data/questionBank.js'
 import { languageMetadata } from '../data/languageMetadata.js'
 import { Codemirror } from 'vue-codemirror'
-
-const questions = reactive(questionBank)
+import Result from './Result.vue'
 const codeFromBox = ref('')
 const output = ref(null)
-const test = defineProps(['test'])
-const summary = ref([])
+const i = defineProps(['currentIndex'])
+const emit = defineEmits(['totalScoreEmit'])
+const test = ref(questionBank)
 const count = ref(0)
-const showTestCase = ref(false)
 const userInput = ref(null)
 const userOutput = ref(null)
 
-// const submit = () => {
-//     codeFromBox = ''
-//     summary.value =[]
-//     count = 0
-//     showTestCase.value = false
-// }
+const totalScore = ref(0)
 
+const submit = () => {
+    totalScore.value = 0
+    codeFromBox.value = ''
+    count.value = 0
+  for(let i = 0; i<5;i++) {
+    for(let j = 0; j<5;j++){
+      // console.log(test.value[i].testcase[j].testResult)
+      if(test.value[i].testcase[j].testResult === null) return console.log("please attempt all 5 questions!")
+      if(test.value[i].testcase[j].testResult === 1) totalScore.value++
+
+    }
+  }
+  emit("totalScoreEmit", totalScore.value)
+  // flag.showResult = true
+}
+const testList = computed(() => test.value[i.currentIndex - 1].testcase)
 const languages = ref(languageMetadata)
 const selectedLangauge = ref({
   id: 71,
@@ -46,31 +56,30 @@ const runCodeForUserInput = () => {
 }
 
 const runCodeForTestcaseInput = () => {
-  summary.value = []
   count.value = 0
-  showTestCase.value = false
-  for (let i = 0; i <= test.test.length - 1; i++) {
-    runCodeOnJudge0(codeFromBox.value, test.test[i].input, selectedLangauge.value)
+  
+  for (let i = 0; i <= 4 ; i++) {
+    runCodeOnJudge0(codeFromBox.value, testList.value[i].input, selectedLangauge.value)
       .then((result) => {
         console.log('Submission Result:', result)
         output.value = result.stdout
-        // console.log('output.value', output.value)
-        // console.log('test.test[i]', test.test[i])
-        if (output.value === test.test[i].output) {
-          test.test[i].testResult = 'PASS'
+        if (output.value === testList.value[i].output) {
+          testList.value[i].testResult = 1
           count.value++
-          // console.log('pass')
-        } else test.test[i].testResult = 'FAIL'
-        // console.log('testResult value', test.test[i].testResult)
-        summary.value.push(test.test[i].testResult)
-        console.log('summary', summary.value)
-      })
+        } else testList.value[i].testResult = 0
+
+        console.log('testResult value', testList.value[i].testResult)      
+        })
       .catch((error) => {
         console.error('Error:', error.message)
       })
   }
-  showTestCase.value = true
+console.log(test.value)
+console.log(totalScore.value)
 }
+
+
+
 </script>
 
 <template>
@@ -80,7 +89,7 @@ const runCodeForTestcaseInput = () => {
         {{ language.name }}
       </option>
     </select>
-    <div class="code-heading">Code Here...</div>
+    <div class="code-heading">Code Here... {{ currentIndex }}</div>
     <div class="line">
       <hr />
     </div>
@@ -114,7 +123,7 @@ const runCodeForTestcaseInput = () => {
       </div>
     </div>
 
-    <div v-if="showTestCase" class="count-passing-testcase">
+    <div class="count-passing-testcase">
       {{ count }} / 5 Testcases passed
       <!-- <div class="line">
         <hr />
@@ -126,9 +135,21 @@ const runCodeForTestcaseInput = () => {
       <div>
         <button class="code-sectn-btn" @click="runCodeForTestcaseInput">Run Testcases</button>
       </div>
-      <!-- <div> -->
-      <!-- <RouterLink class="code-sectn-btn" to="/result">Submit</RouterLink> -->
-      <!-- </div> -->
+      <div class="summary">
+         <h1>Summary :</h1>
+        <!-- <ol> -->
+        <!-- <li v-for="item in test"> -->
+           {{ totalScore }}
+            <!-- <span v-for="t in item.testcase"> -->
+              <!-- {{ t.testResult }} -->
+            <!-- </span> -->
+          <!-- </li> -->
+        <!-- </ol> -->
+      </div>
+      <div>
+        
+      <button class="code-sectn-btn" @click="submit">Submit</button>
+      </div>
     </div>
   </div>
 </template>

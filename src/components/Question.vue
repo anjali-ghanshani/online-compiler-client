@@ -12,7 +12,9 @@ const {
   'nextQuestion',
   'previousQuestion',
   'currentQuesInputFormat',
-  'currentQuesOutputFormat'
+  'currentQuesOutputFormat',
+  'questionStatus',
+  'barPercentage'
 ])
 </script>
 
@@ -44,6 +46,14 @@ const {
       <div class="question-input-output">Output Format:</div>
       <div>{{ currentQuesOutputFormat }}</div>
       <br />
+      <div class="progress">
+
+        <h4>Question {{questionStatus}}</h4>
+        <div class="bar">
+            <div class="completion" :style="{width: barPercentage}"></div>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
@@ -59,12 +69,14 @@ const {
 }
 
 .question {
+  position: relative;
   color: white;
   padding: 1rem;
   background-color: #505050;
   margin: 2rem;
   border: 3px solid black;
   border-radius: 1.25rem;
+  width: 50rem;
 }
 
 .question-text {
@@ -80,12 +92,35 @@ const {
   color: black;
   margin: 0.5rem 1rem;
   cursor: pointer;
-  border: none;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.25);
+  border: 2px solid black;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.5);
 }
 
 .line {
   background: black;
   margin: 1rem 0;
 }
+.progress {
+  text-align: center;
+  position: absolute;
+  bottom: 20px;
+  width: 90%;
+
+}
+
+        .bar {
+        /* width: 300px; */
+        height: 26px;
+        border: 2px solid white;
+        border-radius: 1rem 
+    }
+
+    .completion {
+        height: 100%;
+        width: 0%;
+        background-color: white;
+        border-radius: 1rem 
+
+    }
+
 </style>

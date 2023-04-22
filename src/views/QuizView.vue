@@ -1,18 +1,23 @@
 <script setup>
 import { reactive, ref, computed } from 'vue'
 import { questionBank } from '../data/questionBank.js'
-import Code from '../components/CodeEditor.vue'
+import CodeEditor from '../components/CodeEditor.vue'
 import Question from '../components/Question.vue'
+import Result from '../components/Result.vue'
 
 const questions = reactive(questionBank)
 const currentId = ref(0)
-
+const showResult = ref(false)
+let score = 0
 // Define a computed property to get the current item
 const currentQuesInputFormat = computed(() => questions[currentId.value].input_format)
 const currentQuesOutputFormat = computed(() => questions[currentId.value].output_format)
 const currentIndex = computed(() => questions[currentId.value].id)
 const currentQuestion = computed(() => questions[currentId.value].question)
-const test = computed(() => questions[currentId.value].testcase)
+// const test = computed(() => questions[currentId.value].testcase)
+
+    const questionStatus = computed(() => `${currentId.value}/5`)
+    const barPercentage = computed(() => `${currentId.value/5 * 100}%`)
 
 const nextQuestion = () => {
   if (currentId.value < questions.length - 1) {
@@ -25,18 +30,35 @@ const previousQuestion = () => {
     currentId.value--
   }
 }
+
+const showResultFunction = (totalScore) => {
+    console.log(totalScore)
+    score = totalScore
+    showResult.value = true
+}
+
 </script>
 
 <template>
-  <Question
+
+  <Question v-if="!showResult"
     :currentQuestion="currentQuestion"
     :currentIndex="currentIndex"
     :nextQuestion="nextQuestion"
     :previousQuestion="previousQuestion"
     :currentQuesInputFormat="currentQuesInputFormat"
     :currentQuesOutputFormat="currentQuesOutputFormat"
+    :questionStatus="questionStatus"
+    :barPercentage="barPercentage"
+
   />
-  <Code :test="test" />
+  <CodeEditor v-if="!showResult" :currentIndex="currentIndex"
+  @totalScoreEmit="showResultFunction"/>
+
+  <Result v-else :score="score"/>
+
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>
