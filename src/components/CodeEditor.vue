@@ -2,7 +2,7 @@
 import { RouterLink } from 'vue-router'
 import { EditorState } from '@codemirror/state'
 import { ref, computed, reactive } from 'vue'
-import runCodeOnJudge0 from '../utils'
+import runCodeOnJudge0 from '../utils/code_executor'
 import { questionBank } from '../data/questionBank.js'
 import { languageMetadata } from '../data/languageMetadata.js'
 import { Codemirror } from 'vue-codemirror'
@@ -47,7 +47,7 @@ const runCodeForUserInput = () => {
   console.log(userInput.value)
   runCodeOnJudge0(codeFromBox.value, userInput.value, selectedLangauge.value)
     .then((result) => {
-      userOutput.value = result.stdout
+      userOutput.value = result.output
       console.log(userOutput.value)
     })
     .catch((error) => {
@@ -62,7 +62,7 @@ const runCodeForTestcaseInput = () => {
     runCodeOnJudge0(codeFromBox.value, testList.value[i].input, selectedLangauge.value)
       .then((result) => {
         console.log('Submission Result:', result)
-        output.value = result.stdout
+        output.value = result.output
         if (output.value === testList.value[i].output) {
           testList.value[i].testResult = 1
           count.value++
