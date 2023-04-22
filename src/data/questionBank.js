@@ -174,8 +174,10 @@ const allQuestions = [
   },
   {
     id: 6,
-    question: 'In Chefland, a tax of rupees is deducted if the total income is strictly greater than rupees. Given that total income is X rupees, find out how much money you get.',
-    input_format: 'The first and only line of each test case contains a single integer X — your total income.',
+    question:
+      'In Chefland, a tax of rupees is deducted if the total income is strictly greater than rupees. Given that total income is X rupees, find out how much money you get.',
+    input_format:
+      'The first and only line of each test case contains a single integer X — your total income.',
     output_format: 'For each test case, output on a new line, the amount of money you get.',
     testcase: [
       {
@@ -209,7 +211,8 @@ const allQuestions = [
     id: 7,
     question:
       "Chef's dog binary hears frequencies starting from Hertz to Hert (both inclusive). If Chef's commands have a frequency of X Hertz, find whether binary can hear them or not.",
-    input_format: "Each test case consists of a single integer X - the frequency of Chef's commands in Hertz",
+    input_format:
+      "Each test case consists of a single integer X - the frequency of Chef's commands in Hertz",
     output_format: 'Prints out YES or NO string',
     testcase: [
       {
@@ -241,7 +244,8 @@ const allQuestions = [
   },
   {
     id: 8,
-    question: 'Chef has recently moved into an apartment. It takes minutes for Chef to reach office from the apartment. Chef left for the office X minutes before Chef was supposed to reach. Determine whether or not Chef will be able to reach on time.',
+    question:
+      'Chef has recently moved into an apartment. It takes minutes for Chef to reach office from the apartment. Chef left for the office X minutes before Chef was supposed to reach. Determine whether or not Chef will be able to reach on time.',
     input_format: 'Each test case consists of a single integer X.',
     output_format: 'For each test case, output YES if Chef will reach on time, NO otherwise.',
     testcase: [
@@ -278,8 +282,7 @@ const allQuestions = [
       "Alice and Bob were having an argument about which of them is taller than the other. Charlie got irritated by the argument, and decided to settle the matter once and for all. Charlie measured the heights of Alice and Bob, and got to know that Alice's height is X centimeters and Bob's height is Y centimeters. Help Charlie decide who is taller. It is guaranteed that X!=Y",
     input_format:
       'The first and only line of each test case contains two integers X and Y, as described in the problem statement.',
-    output_format:
-      'A if Alice is taller than Bob, else output B',
+    output_format: 'A if Alice is taller than Bob, else output B',
     testcase: [
       {
         input: '150 160',
@@ -312,8 +315,7 @@ const allQuestions = [
     id: 10,
     question:
       'King loves to go on tours with his friends. King has N cars that can seat 5 people each and M cars that can seat 7 people each. Determine the maximum number of people that can travel together in these cars.',
-    input_format:
-      'N and M — the number of 5-seaters and 7-seaters, respectively.',
+    input_format: 'N and M — the number of 5-seaters and 7-seaters, respectively.',
     output_format:
       'For each test case, output on a new line the maximum number of people that can travel together.',
     testcase: [
@@ -347,7 +349,7 @@ const allQuestions = [
 ]
 
 function getShortlistedQuestions(allQuestions) {
-  const randomQuestions = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 5);
+  const randomQuestions = allQuestions.sort(() => 0.5 - Math.random()).slice(0, 5)
   return randomQuestions
 }
 

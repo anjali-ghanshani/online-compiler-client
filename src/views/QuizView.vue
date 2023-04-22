@@ -9,12 +9,10 @@ const questions = reactive(questionBank)
 const currentId = ref(0)
 const showResult = ref(false)
 let score = 0
-// Define a computed property to get the current item
 const currentQuesInputFormat = computed(() => questions[currentId.value].input_format)
 const currentQuesOutputFormat = computed(() => questions[currentId.value].output_format)
 const currentIndex = computed(() => questions[currentId.value].id)
 const currentQuestion = computed(() => questions[currentId.value].question)
-// const test = computed(() => questions[currentId.value].testcase)
 
 const questionStatus = computed(() => `${currentId.value}/5`)
 const barPercentage = computed(() => `${(currentId.value / 5) * 100}%`)

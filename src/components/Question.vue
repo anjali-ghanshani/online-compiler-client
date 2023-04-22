@@ -1,13 +1,11 @@
 <script setup>
 const {
-  currentIndex,
   currentQuestion,
   nextQuestion,
   previousQuestion,
   currentQuesInputFormat,
   currentQuesOutputFormat
 } = defineProps([
-  'currentIndex',
   'currentQuestion',
   'nextQuestion',
   'previousQuestion',
@@ -69,7 +67,6 @@ const {
 
 .heading h1 {
   margin-top: 1rem;
-
 }
 
 .question {
@@ -112,7 +109,6 @@ const {
 }
 
 .bar {
-  /* width: 300px; */
   height: 26px;
   border: 2px solid white;
   border-radius: 1rem;

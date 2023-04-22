@@ -10,5 +10,14 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 'latest'
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.js", "*.spec.js", "*.vue"],
+      "rules": {
+        "vue/multi-word-component-names": "off",
+        "vue/no-setup-props-destructure": "off"
+      }
+    }
+  ]
 }

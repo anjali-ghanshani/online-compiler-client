@@ -1,12 +1,9 @@
 <script setup>
-import { RouterLink } from 'vue-router'
-import { EditorState } from '@codemirror/state'
-import { ref, computed, reactive } from 'vue'
+import { ref, computed } from 'vue'
 import runCodeOnJudge0 from '../utils/code_executor'
 import { questionBank } from '../data/questionBank.js'
 import { languageMetadata } from '../data/languageMetadata.js'
 import { Codemirror } from 'vue-codemirror'
-import Result from './Result.vue'
 
 const codeFromBox = ref('')
 const output = ref(null)
@@ -18,20 +15,12 @@ const userInput = ref(null)
 const userOutput = ref(null)
 const totalScore = ref(0)
 
-// function getShortlistedQuestions(questionBank10) {
-//   const randomQuestions = questionBank10.sort(() => 0.5 - Math.random()).slice(0, 5);
-//   return randomQuestions
-// }
-
-// const questionBank = getShortlistedQuestions(questionBank10)
-console.log(questionBank)
 const submit = () => {
   totalScore.value = 0
   codeFromBox.value = ''
   count.value = 0
   for (let i = 0; i < 5; i++) {
     for (let j = 0; j < 5; j++) {
-      // console.log(test.value[i].testcase[j].testResult)
       if (test.value[i].testcase[j].testResult === null)
         return console.log('please attempt all 5 questions!')
       if (test.value[i].testcase[j].testResult === 1) totalScore.value++
@@ -125,9 +114,7 @@ const runCodeForTestcaseInput = () => {
       </div>
     </div>
 
-    <div class="count-passing-testcase">
-      {{ count }} / 5 Testcases passed for this question!
-    </div>
+    <div class="count-passing-testcase">{{ count }} / 5 Testcases passed for this question!</div>
 
     <div class="run-n-submit">
       <div>
@@ -142,11 +129,10 @@ const runCodeForTestcaseInput = () => {
 
 <style scoped>
 .select-lang {
-    background-color: #f5e12d;
+  background-color: #f5e12d;
   border: 2px solid black;
   border-radius: 10px;
   cursor: pointer;
-
 }
 .code-sectn-btn {
   text-decoration: none;
@@ -174,12 +160,10 @@ const runCodeForTestcaseInput = () => {
 .code-heading {
   font-size: 30px;
   font-weight: bold;
-  margin: 1rem 0 ;
+  margin: 1rem 0;
   color: white;
   text-align: center;
 }
-
-
 
 .run-n-submit {
   display: flex;

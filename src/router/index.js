@@ -1,5 +1,3 @@
-// Define Routing Rules here
-
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import QuizView from '../views/QuizView.vue'
