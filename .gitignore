@@ -13,6 +13,8 @@ dist-ssr
 coverage
 *.local
 
+*.py
+
 # Environment File
 *.env
 
